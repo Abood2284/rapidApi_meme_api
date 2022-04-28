@@ -1,23 +1,25 @@
+import 'package:flutter/material.dart';
+
 class Recipe {
   String title;
-  String rating;
+  double rating;
   String cookTime;
   String thumbNailUrl;
 
   Recipe({
-    required this.title,
-    required this.rating,
-    required this.cookTime,
-    required this.thumbNailUrl,
+    @required this.title,
+    @required this.rating,
+    @required this.cookTime,
+    @required this.thumbNailUrl,
   });
 
 // Create single object of Recipe from json
   factory Recipe.fromJson(dynamic json) {
     return Recipe(
-        title: json['name'],
-        rating: json['rating'],
-        cookTime: json['totalTime'],
-        thumbNailUrl: json['images'][0]['hostedLargeUrl']);
+        title: json['name'] as String,
+        rating: json['rating'] as double,
+        cookTime: json['totalTime'] as String,
+        thumbNailUrl: json['images'][0]['hostedLargeUrl'] as String);
   }
 
 // Convert list of data into recipe object
@@ -27,5 +29,10 @@ class Recipe {
     return snapshot.map((data) {
       return Recipe.fromJson(data);
     }).toList();
+  }
+
+  @override
+  String toString() {
+    return 'Recipe {name: $title, image: $thumbNailUrl, rating: $rating, totalTime: $cookTime}';
   }
 }

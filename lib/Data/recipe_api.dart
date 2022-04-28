@@ -13,7 +13,7 @@ class RecipeApi {
     var uri = Uri.https(
       'yummly2.p.rapidapi.com',
       '/feeds/list',
-      {"limit": '24', "start": '0'},
+      {"limit": '24', "start": '0', "tag": "list.recipe.popular"},
     );
 
 // header is optional though it was provided by rapidApi.com so we added it too
